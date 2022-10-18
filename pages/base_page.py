@@ -1,5 +1,5 @@
 from selenium.common.exceptions import NoSuchFrameException
-from.locators import MainPageLocators
+from.locators import BasePageLocators
 
 class BasePage():
 
@@ -17,5 +17,5 @@ class BasePage():
             return False
         return True
 
-    def go_to_login_page(self):
-        self.browser.find_element(*MainPageLocators.login_btn).click()
+    def should_be_authorised_user(self):
+        assert self.element_is_present(*BasePageLocators.user_icon)

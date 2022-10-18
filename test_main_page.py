@@ -22,5 +22,15 @@ def test_guest_can_go_to_login_page(browser, ):
     page.open_page()
     page.go_to_login_page()
     page = LoginPage(browser, link)
-    page.should_be_login_link()
+    page.should_be_login_page()
+
+def test_user_should_be_authorised(browser):
+    link = 'https://selenium1py.pythonanywhere.com/ru/accounts/login/'
+    page = LoginPage(browser, link)
+    page.open_page()
+    page.register_user(email=str(time.time()) + '@mail.org', password='QAZ123edc!')
+    page.should_be_authorised_user()
+
+
+
 time.sleep(3)
